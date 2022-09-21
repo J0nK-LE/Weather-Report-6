@@ -38,14 +38,12 @@ let cityData;
 let latLonData;
 let cityNM;
 
+// flashes in the log for a millisecond then refreshes
 submitBtn.addEventListener('click', function(){
     cityNM = document.querySelector('#inputCity').value
     
 })
 console.log(cityNM)
-
-
-
 
 
 fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&appid=${apiKey}`)
@@ -71,10 +69,13 @@ fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&appid=${apiKey
 
             })
             .then(function (currentCast) {
+                currentCity.textContent = currentCast.name
+                todayTemp.textContent = currentCast.main.temp
+                todayHumid.textContent = currentCast.main.humidity
+                todayWind.textContent = currentCast.wind.speed
 
-                console.log(currentCast);
+                // console.log(currentCast);
             })
-
     })
 
 
@@ -101,8 +102,25 @@ fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&appid=${apiKey
 
             })
             .then(function (foreCast) {
+                day1Temp.textContent = foreCast.list[0].main.temp
+                day2Temp.textContent = foreCast.list[8].main.temp
+                day3Temp.textContent = foreCast.list[16].main.temp
+                day4Temp.textContent = foreCast.list[24].main.temp
+                day5Temp.textContent = foreCast.list[39].main.temp
 
-                console.log(foreCast);
+                day1Wind.textContent = foreCast.list[0].wind.speed
+                day2Wind.textContent = foreCast.list[8].wind.speed
+                day3Wind.textContent = foreCast.list[16].wind.speed
+                day4Wind.textContent = foreCast.list[24].wind.speed
+                day5Wind.textContent = foreCast.list[39].wind.speed
+
+                day1Humid.textContent = foreCast.list[0].main.humidity
+                day2Humid.textContent = foreCast.list[8].main.humidity
+                day3Humid.textContent = foreCast.list[16].main.humidity
+                day4Humid.textContent = foreCast.list[24].main.humidity
+                day5Humid.textContent = foreCast.list[39].main.humidity
+
+                // console.log(foreCast);
             })
     })
 
