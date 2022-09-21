@@ -15,20 +15,22 @@
   <header>
     <div class="container-fluid bg-primary text-white text-center">Weather Dashboard</div>
   </header>
-
-  <main class="d-flex m-3">
-    <aside>
+<div class="d-flex">
+  <aside id="searchSection">
     <form class="m-3">
       <div class="mb-3">
         <label for="inputCity" class="form-label">Search for a city:</label>
         <input type="text" class="form-control" id="inputCity">
       </div>
-      <button type="submit" class="btn btn-primary" id="submitBtn">Submit</button>
+      <button type="button" class="btn btn-primary" id="submitBtn">Submit</button>
       <ul id="searchHistory"></ul>
     </form>
-    <ul></ul>
+    <div class="container h-auto">
+    <ul id="searchHistory"></ul>
+  </div>
   </aside>
-
+  
+  <main class="column my-4 me-4 ms-0">
     <div class="container border border-primary m-3 currentBox">
       <h1><Span id="currentCity"></Span>(<span id="currentDate"></span>)</h1>
       <h2>Temp: <span id="todayTemp"></span>&#8457</h2>
@@ -36,10 +38,10 @@
       <h2>Wind Speed: <span id="todayWind"></span> MPH</h2>
     </div>
 
-  </main>
-  <section class="row justify-content-between">
+  
+  <section class="row ms-0">
     
-    <div class="card" style="width: 18rem;">
+    <div class="card" style="width: 15rem;">
       <div class="card-body">
 
         <h5 class="card-title"><span id="day1Forecast"></span></h5>
@@ -51,7 +53,7 @@
       </div>
     </div>
 
-   <div class="card" style="width: 18rem;">
+   <div class="card" style="width: 15rem;">
       <div class="card-body">
 
         <h5 class="card-title"><span id="day2Forecast"></span></h5>
@@ -62,7 +64,7 @@
 
       </div>
     </div>
-    <div class="card" style="width: 18rem;">
+    <div class="card" style="width: 15rem;">
       <div class="card-body">
 
         <h5 class="card-title"><span id="day3Forecast"></span></h5>
@@ -73,7 +75,7 @@
 
       </div>
     </div>
-    <div class="card" style="width: 18rem;">
+    <div class="card" style="width: 15rem;">
       <div class="card-body">
 
         <h5 class="card-title"><span id="day4Forecast"></span></h5>
@@ -84,7 +86,7 @@
 
       </div>
     </div>
-    <div class="card" style="width: 18rem;">
+    <div class="card" style="width: 15rem;">
       <div class="card-body">
 
         <h5 class="card-title"><span id="day5Forecast"></span></h5>
@@ -95,11 +97,12 @@
 
       </div>
     </div>
-
+    
 
 
   </section>
-
+</main>
+</div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
@@ -110,6 +113,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
     integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz"
     crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
   <script src="assets/script.js"></script>
 </body>
 

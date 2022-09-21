@@ -29,102 +29,128 @@ let day4Humid = document.querySelector('#day4Humid')
 let day5Humid = document.querySelector('#day5Humid')
 
 let submitBtn = document.querySelector('#submitBtn')
-// let inputCity = document.querySelector('#inputCity')
+
 
 
 let apiKey = "fa2c3cfe8bd2e87e7cafad8a2079cf35";
-let cityName = "dallas";
+let cityName;
 let cityData;
 let latLonData;
-let cityNM;
 
-// flashes in the log for a millisecond then refreshes
-submitBtn.addEventListener('click', function(){
-    cityNM = document.querySelector('#inputCity').value
-    
+
+
+
+submitBtn.addEventListener('click', function () {
+    cityName = document.querySelector('#inputCity').value
+    // console.log(cityName)
+    getWeather()
+    renderHistory()
+
 })
-console.log(cityNM)
+
+currentDate.textContent = moment().format("M/D/YY");
+day1Forecast.textContent = moment().add(1, 'd').format("M/D/YY");
+day2Forecast.textContent = moment().add(2, 'd').format("M/D/YY");
+day3Forecast.textContent = moment().add(3, 'd').format("M/D/YY");
+day4Forecast.textContent = moment().add(4, 'd').format("M/D/YY");
+day5Forecast.textContent = moment().add(5, 'd').format("M/D/YY");
 
 
-fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&appid=${apiKey}`)
-    .then(function (response) {
+function getWeather() {
+    fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&appid=${apiKey}`)
+        .then(function (response) {
 
-        return response.json()
+            return response.json()
 
-    })
-    .then(function (cityData) {
-
-
-        console.log(cityData[0].lat);
-        console.log(cityData[0].lon);
-
-        return { lat: cityData[0].lat, lon: cityData[0].lon }
-
-    })
-    .then(function (latLonData) {
-        return fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latLonData.lat}&lon=${latLonData.lon}&appid=${apiKey}&units=imperial`)
-            .then(function (response) {
-
-                return response.json()
-
-            })
-            .then(function (currentCast) {
-                currentCity.textContent = currentCast.name
-                todayTemp.textContent = currentCast.main.temp
-                todayHumid.textContent = currentCast.main.humidity
-                todayWind.textContent = currentCast.wind.speed
-
-                // console.log(currentCast);
-            })
-    })
+        })
+        .then(function (cityData) {
 
 
-fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&appid=${apiKey}`)
-    .then(function (response) {
+            // console.log(cityData[0].lat);
+            // console.log(cityData[0].lon);
 
-        return response.json()
+            return { lat: cityData[0].lat, lon: cityData[0].lon }
 
-    })
-    .then(function (cityData) {
+        })
+        .then(function (latLonData) {
+            return fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latLonData.lat}&lon=${latLonData.lon}&appid=${apiKey}&units=imperial`)
+                .then(function (response) {
 
+                    return response.json()
 
-        // console.log(cityData[0].lat);
-        // console.log(cityData[0].lon);
+                })
+                .then(function (currentCast) {
+                    currentCity.textContent = currentCast.name
+                    todayTemp.textContent = currentCast.main.temp
+                    todayHumid.textContent = currentCast.main.humidity
+                    todayWind.textContent = currentCast.wind.speed
 
-        return { lat: cityData[0].lat, lon: cityData[0].lon }
-
-    })
-    .then(function (latLonData) {
-        return fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${latLonData.lat}&lon=${latLonData.lon}&appid=${apiKey}&units=imperial`)
-            .then(function (response) {
-
-                return response.json()
-
-            })
-            .then(function (foreCast) {
-                day1Temp.textContent = foreCast.list[0].main.temp
-                day2Temp.textContent = foreCast.list[8].main.temp
-                day3Temp.textContent = foreCast.list[16].main.temp
-                day4Temp.textContent = foreCast.list[24].main.temp
-                day5Temp.textContent = foreCast.list[39].main.temp
-
-                day1Wind.textContent = foreCast.list[0].wind.speed
-                day2Wind.textContent = foreCast.list[8].wind.speed
-                day3Wind.textContent = foreCast.list[16].wind.speed
-                day4Wind.textContent = foreCast.list[24].wind.speed
-                day5Wind.textContent = foreCast.list[39].wind.speed
-
-                day1Humid.textContent = foreCast.list[0].main.humidity
-                day2Humid.textContent = foreCast.list[8].main.humidity
-                day3Humid.textContent = foreCast.list[16].main.humidity
-                day4Humid.textContent = foreCast.list[24].main.humidity
-                day5Humid.textContent = foreCast.list[39].main.humidity
-
-                // console.log(foreCast);
-            })
-    })
+                    // console.log(currentCast);
+                })
+        })
 
 
+    fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&appid=${apiKey}`)
+        .then(function (response) {
+
+            return response.json()
+
+        })
+        .then(function (cityData) {
+
+
+            // console.log(cityData[0].lat);
+            // console.log(cityData[0].lon);
+
+            return { lat: cityData[0].lat, lon: cityData[0].lon }
+
+        })
+        .then(function (latLonData) {
+            return fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${latLonData.lat}&lon=${latLonData.lon}&appid=${apiKey}&units=imperial`)
+                .then(function (response) {
+
+                    return response.json()
+
+                })
+                .then(function (foreCast) {
+                    day1Temp.textContent = foreCast.list[0].main.temp
+                    day2Temp.textContent = foreCast.list[8].main.temp
+                    day3Temp.textContent = foreCast.list[16].main.temp
+                    day4Temp.textContent = foreCast.list[24].main.temp
+                    day5Temp.textContent = foreCast.list[39].main.temp
+
+                    day1Wind.textContent = foreCast.list[0].wind.speed
+                    day2Wind.textContent = foreCast.list[8].wind.speed
+                    day3Wind.textContent = foreCast.list[16].wind.speed
+                    day4Wind.textContent = foreCast.list[24].wind.speed
+                    day5Wind.textContent = foreCast.list[39].wind.speed
+
+                    day1Humid.textContent = foreCast.list[0].main.humidity
+                    day2Humid.textContent = foreCast.list[8].main.humidity
+                    day3Humid.textContent = foreCast.list[16].main.humidity
+                    day4Humid.textContent = foreCast.list[24].main.humidity
+                    day5Humid.textContent = foreCast.list[39].main.humidity
+
+                    // console.log(foreCast);
+                })
+        })
+}
+
+let citiesHistory = [];
+
+function renderHistory() {
+    searchHistory.innerHTML = "";
+    
+  
+    // Render a new li for each city
+    for (let i = 0; i < citiesHistory.length; i++) {
+      let cityHistory = citiesHistory[i];
+        
+      let li = document.createElement("li");
+      li.textContent = cityHistory.value;
+          searchHistory.appendChild(li);
+    }
+  }
 
 
 
