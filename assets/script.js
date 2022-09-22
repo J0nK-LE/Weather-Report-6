@@ -10,6 +10,12 @@ let day3Forecast = document.querySelector('#day3Forecast');
 let day4Forecast = document.querySelector('#day4Forecast');
 let day5Forecast = document.querySelector('#day5Forecast');
 
+let day1Icon = document.querySelector('#day1Icon');
+let day2Icon = document.querySelector('#day2Icon');
+let day3Icon = document.querySelector('#day3Icon');
+let day4Icon = document.querySelector('#day4Icon');
+let day5Icon = document.querySelector('#day5Icon');
+
 let day1Temp = document.querySelector('#day1Temp')
 let day2Temp = document.querySelector('#day2Temp')
 let day3Temp = document.querySelector('#day3Temp')
@@ -86,8 +92,12 @@ function getWeather() {
                     todayTemp.textContent = currentCast.main.temp
                     todayHumid.textContent = currentCast.main.humidity
                     todayWind.textContent = currentCast.wind.speed
+                    
+                    let icon0 = currentCast.weather[0].icon
+                    
+                   currentIcon.setAttribute("src", (`http://openweathermap.org/img/wn/${icon0}.png`))
 
-                    // console.log(currentCast);
+                    console.log(currentCast);
                 })
         })
 
@@ -115,23 +125,40 @@ function getWeather() {
 
                 })
                 .then(function (foreCast) {
-                    day1Temp.textContent = foreCast.list[0].main.temp
-                    day2Temp.textContent = foreCast.list[8].main.temp
-                    day3Temp.textContent = foreCast.list[16].main.temp
-                    day4Temp.textContent = foreCast.list[24].main.temp
-                    day5Temp.textContent = foreCast.list[39].main.temp
+                    let icon1 = foreCast.list[5].weather[0].icon
+                    // console.log(icon1)
+                    let icon2 = foreCast.list[13].weather[0].icon
+                    let icon3 = foreCast.list[21].weather[0].icon
+                    let icon4 = foreCast.list[29].weather[0].icon
+                    console.log(icon4)
+                    let icon5 = foreCast.list[37].weather[0].icon
+                    
+                   day1Icon.setAttribute("src", (`http://openweathermap.org/img/wn/${icon1}.png`))
+                   day2Icon.setAttribute("src", (`http://openweathermap.org/img/wn/${icon2}.png`))
+                   day3Icon.setAttribute("src", (`http://openweathermap.org/img/wn/${icon3}.png`))
+                   day4Icon.setAttribute("src", (`http://openweathermap.org/img/wn/${icon4}.png`))
+                   day5Icon.setAttribute("src", (`http://openweathermap.org/img/wn/${icon5}.png`))
+                   
 
-                    day1Wind.textContent = foreCast.list[0].wind.speed
-                    day2Wind.textContent = foreCast.list[8].wind.speed
-                    day3Wind.textContent = foreCast.list[16].wind.speed
-                    day4Wind.textContent = foreCast.list[24].wind.speed
-                    day5Wind.textContent = foreCast.list[39].wind.speed
+                    day1Temp.textContent = foreCast.list[5].main.temp
+                    day2Temp.textContent = foreCast.list[13].main.temp
+                    day3Temp.textContent = foreCast.list[21].main.temp
+                    day4Temp.textContent = foreCast.list[29].main.temp
+                    day5Temp.textContent = foreCast.list[37].main.temp
 
-                    day1Humid.textContent = foreCast.list[0].main.humidity
-                    day2Humid.textContent = foreCast.list[8].main.humidity
-                    day3Humid.textContent = foreCast.list[16].main.humidity
-                    day4Humid.textContent = foreCast.list[24].main.humidity
-                    day5Humid.textContent = foreCast.list[39].main.humidity
+                    day1Wind.textContent = foreCast.list[5].wind.speed
+                    day2Wind.textContent = foreCast.list[13].wind.speed
+                    day3Wind.textContent = foreCast.list[21].wind.speed
+                    day4Wind.textContent = foreCast.list[29].wind.speed
+                    day5Wind.textContent = foreCast.list[37].wind.speed
+
+                    day1Humid.textContent = foreCast.list[5].main.humidity
+                    day2Humid.textContent = foreCast.list[13].main.humidity
+                    day3Humid.textContent = foreCast.list[21].main.humidity
+                    day4Humid.textContent = foreCast.list[29].main.humidity
+                    day5Humid.textContent = foreCast.list[37].main.humidity
+
+
 
                     // console.log(foreCast);
                 })

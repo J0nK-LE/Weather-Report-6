@@ -1,4 +1,13 @@
+header{
+    background-color: midnightblue;
+}
+
 #searchSection{
     float: left;
     text-align: center;
+}
+
+.card {
+    background-color: midnightblue;
+    color: white;
 }
