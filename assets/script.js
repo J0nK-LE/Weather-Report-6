@@ -29,13 +29,15 @@ let day4Humid = document.querySelector('#day4Humid')
 let day5Humid = document.querySelector('#day5Humid')
 
 let submitBtn = document.querySelector('#submitBtn')
-
+let searchHistory = document.querySelector('#searchHistory')
+let cityListen = document.querySelector('#inputCity')
 
 
 let apiKey = "fa2c3cfe8bd2e87e7cafad8a2079cf35";
 let cityName;
 let cityData;
 let latLonData;
+let cityHistory;
 
 
 
@@ -136,21 +138,37 @@ function getWeather() {
         })
 }
 
-let citiesHistory = [];
 
-function renderHistory() {
-    searchHistory.innerHTML = "";
-    
-  
-    // Render a new li for each city
-    for (let i = 0; i < citiesHistory.length; i++) {
-      let cityHistory = citiesHistory[i];
-        
-      let li = document.createElement("li");
-      li.textContent = cityHistory.value;
-          searchHistory.appendChild(li);
-    }
-  }
+
+function renderHistory(){
+    cityListen.innerHTML = ""
+}
+
+
+
+
+
+
+
+
+
+// let citiesHistory = [];
+
+// function renderHistory() {
+//     searchHistory.innerHTML = "";
+
+//     for (let i = 0; i < citiesHistory.length; i++) {
+//         let cityHistory = citiesHistory[i];
+//         console.log(cityHistory)
+
+//         let li = document.createElement("li");
+//         li.textContent = cityHistory;
+//         li.setAttribute("data-index", i);
+
+
+//         searchHistory.appendChild(li);
+//     }
+// }
 
 
 
