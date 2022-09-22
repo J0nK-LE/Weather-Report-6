@@ -45,6 +45,7 @@ let cityData;
 let latLonData;
 let cityHistory;
 
+getWeather()
 
 
 
