@@ -12,3 +12,14 @@ header{
     background-color: midnightblue;
     color: white;
 }
+
+.UI { 
+    width: 90%; 
+    background-color: lightgray; 
+    color: white; 
+    border-radius: 4px;  
+    padding: 8px; 
+    margin: 8px; 
+    margin-left: 0; 
+    margin-right: 0;
+}

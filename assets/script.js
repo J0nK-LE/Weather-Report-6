@@ -38,20 +38,24 @@ let submitBtn = document.querySelector('#submitBtn')
 let searchHistory = document.querySelector('#searchHistory')
 let cityListen = document.querySelector('#inputCity')
 
+let citiesHistory = [];
 
 let apiKey = "fa2c3cfe8bd2e87e7cafad8a2079cf35";
 let cityName;
 let cityData;
 let latLonData;
 let cityHistory;
+let button;
 
-getWeather()
-
+// getWeather()
+// load cities()
 
 
 submitBtn.addEventListener('click', function () {
     cityName = document.querySelector('#inputCity').value
     // console.log(cityName)
+    citiesHistory.push(cityName)
+    console.log(citiesHistory)
     getWeather()
     renderHistory()
 
@@ -93,12 +97,12 @@ function getWeather() {
                     todayTemp.textContent = currentCast.main.temp
                     todayHumid.textContent = currentCast.main.humidity
                     todayWind.textContent = currentCast.wind.speed
-                    
-                    let icon0 = currentCast.weather[0].icon
-                    
-                   currentIcon.setAttribute("src", (`http://openweathermap.org/img/wn/${icon0}.png`))
 
-                    console.log(currentCast);
+                    let icon0 = currentCast.weather[0].icon
+
+                    currentIcon.setAttribute("src", (`http://openweathermap.org/img/wn/${icon0}.png`))
+
+                    // console.log(currentCast);
                 })
         })
 
@@ -131,15 +135,15 @@ function getWeather() {
                     let icon2 = foreCast.list[13].weather[0].icon
                     let icon3 = foreCast.list[21].weather[0].icon
                     let icon4 = foreCast.list[29].weather[0].icon
-                    console.log(icon4)
+                    // console.log(icon4)
                     let icon5 = foreCast.list[37].weather[0].icon
-                    
-                   day1Icon.setAttribute("src", (`http://openweathermap.org/img/wn/${icon1}.png`))
-                   day2Icon.setAttribute("src", (`http://openweathermap.org/img/wn/${icon2}.png`))
-                   day3Icon.setAttribute("src", (`http://openweathermap.org/img/wn/${icon3}.png`))
-                   day4Icon.setAttribute("src", (`http://openweathermap.org/img/wn/${icon4}.png`))
-                   day5Icon.setAttribute("src", (`http://openweathermap.org/img/wn/${icon5}.png`))
-                   
+
+                    day1Icon.setAttribute("src", (`http://openweathermap.org/img/wn/${icon1}.png`))
+                    day2Icon.setAttribute("src", (`http://openweathermap.org/img/wn/${icon2}.png`))
+                    day3Icon.setAttribute("src", (`http://openweathermap.org/img/wn/${icon3}.png`))
+                    day4Icon.setAttribute("src", (`http://openweathermap.org/img/wn/${icon4}.png`))
+                    day5Icon.setAttribute("src", (`http://openweathermap.org/img/wn/${icon5}.png`))
+
 
                     day1Temp.textContent = foreCast.list[5].main.temp
                     day2Temp.textContent = foreCast.list[13].main.temp
@@ -168,37 +172,54 @@ function getWeather() {
 
 
 
-function renderHistory(){
-    cityListen.innerHTML = ""
+// need to make
+// function for 
+    //  saving city
+    // loading city
+    // hide function for dates on click
+// .includes() - to eliminate already selected cities  
+// event listener for history buttons
+// tie history buttons to search
+
+
+
+
+
+
+
+
+
+function renderHistory() {
+    inputCity.innerHTML = "";
+
+    for (let i = 0; i < citiesHistory.length; i++) {
+        let cityHistory = citiesHistory[i];
+        console.log(cityHistory)
+
+        // let li = document.createElement("li");
+        // li.textContent = cityHistory;
+        // li.setAttribute("data-index", i);
+
+        button = document.createElement("button")
+        button.classList.add("UI");
+        button.textContent = cityHistory;
+        searchHistory.appendChild(button);
+
+
+        
+    }
+
+    
+    button.addEventListener("click", function () {
+        inputCity.replaceChildren();
+        getWeather(cityName);
+    });
+
+
 }
 
 
 
-
-
-
-
-
-
-// let citiesHistory = [];
-
-// function renderHistory() {
-//     searchHistory.innerHTML = "";
-
-//     for (let i = 0; i < citiesHistory.length; i++) {
-//         let cityHistory = citiesHistory[i];
-//         console.log(cityHistory)
-
-//         let li = document.createElement("li");
-//         li.textContent = cityHistory;
-//         li.setAttribute("data-index", i);
-
-
-//         searchHistory.appendChild(li);
-//     }
-// }
-
-
-
+// load cities ()
 
 
