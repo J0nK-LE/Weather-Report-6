@@ -13,9 +13,9 @@ header{
     color: white;
 }
 
-.UI { 
+.historyBtn { 
     width: 90%; 
-    background-color: lightgray; 
+    background-color: black; 
     color: white; 
     border-radius: 4px;  
     padding: 8px; 

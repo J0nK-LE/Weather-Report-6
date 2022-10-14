@@ -55,9 +55,11 @@ submitBtn.addEventListener('click', function () {
     cityName = document.querySelector('#inputCity').value
     // console.log(cityName)
     citiesHistory.push(cityName)
-    console.log(citiesHistory)
+    // console.log(citiesHistory)
     getWeather()
     renderHistory()
+
+    inputCity.value = " ";
 
 })
 
@@ -68,6 +70,33 @@ day3Forecast.textContent = moment().add(3, 'd').format("M/D/YY");
 day4Forecast.textContent = moment().add(4, 'd').format("M/D/YY");
 day5Forecast.textContent = moment().add(5, 'd').format("M/D/YY");
 
+function renderHistory() {
+  
+    for (let i = 0; i < citiesHistory.length; i++) {
+        let cityHistory = citiesHistory[i];
+        // console.log(cityHistory)
+
+        button = document.createElement("button")
+        button.classList.add("historyBtn");
+        button.textContent = cityHistory;
+        searchHistory.appendChild(button);
+
+
+
+    }
+    let historyBtns = document.querySelectorAll(".historyBtn")
+
+    // console.log(historyBtns)
+
+    historyBtns.forEach(historyBtn =>
+        historyBtn.addEventListener("click", function handleEvent(event) {
+            let cityName = event.target.innerText
+            console.log(cityName)
+            getWeather();
+        }));
+
+
+}
 
 function getWeather() {
     fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&appid=${apiKey}`)
@@ -172,51 +201,7 @@ function getWeather() {
 
 
 
-// need to make
-// function for 
-    //  saving city
-    // loading city
-    // hide function for dates on click
-// .includes() - to eliminate already selected cities  
-// event listener for history buttons
-// tie history buttons to search
 
-
-
-
-
-
-
-
-
-function renderHistory() {
-    inputCity.innerHTML = "";
-
-    for (let i = 0; i < citiesHistory.length; i++) {
-        let cityHistory = citiesHistory[i];
-        console.log(cityHistory)
-
-        // let li = document.createElement("li");
-        // li.textContent = cityHistory;
-        // li.setAttribute("data-index", i);
-
-        button = document.createElement("button")
-        button.classList.add("UI");
-        button.textContent = cityHistory;
-        searchHistory.appendChild(button);
-
-
-        
-    }
-
-    
-    button.addEventListener("click", function () {
-        inputCity.replaceChildren();
-        getWeather(cityName);
-    });
-
-
-}
 
 
 
