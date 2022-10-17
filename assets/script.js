@@ -136,7 +136,7 @@ function getWeather(cityName) {
 
           currentIcon.setAttribute(
             "src",
-            `http://openweathermap.org/img/wn/${icon0}.png`
+            `https://openweathermap.org/img/wn/${icon0}.png`
           );
 
         //   console.log(currentCast);
@@ -144,7 +144,7 @@ function getWeather(cityName) {
     });
 
   fetch(
-    `http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&appid=${apiKey}`
+    `https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&appid=${apiKey}`
   )
     .then(function (response) {
       return response.json();
@@ -173,23 +173,23 @@ function getWeather(cityName) {
 
           day1Icon.setAttribute(
             "src",
-            `http://openweathermap.org/img/wn/${icon1}.png`
+            `https://openweathermap.org/img/wn/${icon1}.png`
           );
           day2Icon.setAttribute(
             "src",
-            `http://openweathermap.org/img/wn/${icon2}.png`
+            `https://openweathermap.org/img/wn/${icon2}.png`
           );
           day3Icon.setAttribute(
             "src",
-            `http://openweathermap.org/img/wn/${icon3}.png`
+            `https://openweathermap.org/img/wn/${icon3}.png`
           );
           day4Icon.setAttribute(
             "src",
-            `http://openweathermap.org/img/wn/${icon4}.png`
+            `https://openweathermap.org/img/wn/${icon4}.png`
           );
           day5Icon.setAttribute(
             "src",
-            `http://openweathermap.org/img/wn/${icon5}.png`
+            `https://openweathermap.org/img/wn/${icon5}.png`
           );
 
           day1Temp.textContent = foreCast.list[5].main.temp;
