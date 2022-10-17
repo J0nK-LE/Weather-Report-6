@@ -13,13 +13,18 @@ header{
     color: white;
 }
 
+#searchHistory{
+    display: flex;
+    flex-direction: column;
+   
+   
+}
+
 .historyBtn { 
-    width: 90%; 
+    
     background-color: black; 
-    color: white; 
-    border-radius: 4px;  
+    color: white;  
     padding: 8px; 
     margin: 8px; 
-    margin-left: 0; 
     margin-right: 0;
 }
